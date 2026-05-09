@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://socialyield.co.uk/sitemap.xml
