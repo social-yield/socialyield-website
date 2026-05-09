@@ -1,10 +1,55 @@
 'use strict';
 
-// ─── GOOGLE ANALYTICS ────────────────────────────────────────────────────────
+// ─── COOKIE CONSENT + GOOGLE ANALYTICS ───────────────────────────────────────
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-GWD0JQLDQW');
+
+(function () {
+  const banner  = document.getElementById('cookie-banner');
+  const accept  = document.getElementById('cookie-accept');
+  const decline = document.getElementById('cookie-decline');
+  const consent = localStorage.getItem('sy_cookie_consent');
+
+  function enableGA() {
+    gtag('js', new Date());
+    gtag('config', 'G-GWD0JQLDQW');
+  }
+
+  function showBanner() {
+    if (!banner) return;
+    banner.classList.remove('hidden');
+    requestAnimationFrame(() => banner.classList.add('visible'));
+  }
+
+  function hideBanner() {
+    if (!banner) return;
+    banner.classList.remove('visible');
+    setTimeout(() => banner.classList.add('hidden'), 400);
+  }
+
+  if (consent === 'accepted') {
+    enableGA();
+  } else if (consent === 'declined') {
+    // GA stays off
+  } else {
+    showBanner();
+  }
+
+  if (accept) {
+    accept.addEventListener('click', () => {
+      localStorage.setItem('sy_cookie_consent', 'accepted');
+      hideBanner();
+      enableGA();
+    });
+  }
+
+  if (decline) {
+    decline.addEventListener('click', () => {
+      localStorage.setItem('sy_cookie_consent', 'declined');
+      hideBanner();
+    });
+  }
+}());
 
 // ─── EMAIL OBFUSCATION ───────────────────────────────────────────────────────
 document.querySelectorAll('.obf-email').forEach(el => {

@@ -919,6 +919,99 @@ input, button { font-family: inherit; font-size: inherit; }
 .nav__logo--footer .nav__logo-name { color: var(--white); }
 
 /* =============================================
+   WHATSAPP BUTTON
+   ============================================= */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 9998;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  cursor: pointer;
+}
+.whatsapp-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+}
+.whatsapp-btn svg { width: 30px; height: 30px; }
+.whatsapp-tooltip {
+  position: absolute;
+  right: 68px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  white-space: nowrap;
+  padding: 0.4rem 0.875rem;
+  border-radius: var(--r-sm);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.whatsapp-btn:hover .whatsapp-tooltip { opacity: 1; }
+
+/* =============================================
+   COOKIE BANNER
+   ============================================= */
+.cookie-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 10000;
+  background: var(--navy);
+  border-top: 1px solid rgba(200,169,110,0.2);
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  box-shadow: 0 -4px 32px rgba(10,22,40,0.4);
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease);
+}
+.cookie-banner.visible { transform: translateY(0); }
+.cookie-banner.hidden { display: none; }
+.cookie-banner__text {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  flex: 1;
+  min-width: 260px;
+}
+.cookie-banner__text a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+.cookie-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+.cookie-banner__decline {
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  transition: color 0.15s;
+  padding: 0;
+  font-family: var(--font-body);
+}
+.cookie-banner__decline:hover { color: rgba(255,255,255,0.75); }
+
+/* =============================================
    GRAIN TEXTURE OVERLAY
    ============================================= */
 body::before {
